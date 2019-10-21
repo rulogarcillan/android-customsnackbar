@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title1">Fila insertada correctamente</string>
+    <string name="action1">Cancel</string>
+</resources>
