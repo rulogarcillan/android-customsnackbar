@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="title1">Fila insertada correctamente</string>
+    <string name="app_name">Custom snackbar</string>
+    <string name="title1">Row inserted correctly</string>
     <string name="action1">Cancel</string>
+    <string name="init_custom_snackbar">Init custom snackbar</string>
 </resources>

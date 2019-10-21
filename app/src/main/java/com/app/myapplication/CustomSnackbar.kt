@@ -1,6 +1,5 @@
 package com.app.myapplication
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ class CustomSnackbar(
     parent: ViewGroup,
     content: View,
     contentViewCallback: com.google.android.material.snackbar.ContentViewCallback
+
 ) : BaseTransientBottomBar<CustomSnackbar>(parent, content, contentViewCallback) {
 
 
@@ -95,14 +95,9 @@ class CustomSnackbar(
             val contentViewCallback =
                 object : com.google.android.material.snackbar.ContentViewCallback {
 
-                    override fun animateContentIn(delay: Int, duration: Int) {
-                        Log.d("TAG", "PROBANDO ANIMATE IN")
-                    }
+                    override fun animateContentIn(delay: Int, duration: Int) {}
 
-                    override fun animateContentOut(delay: Int, duration: Int) {
-                        Log.d("TAG", "PROBANDO ANIMATE OUT")
-
-                    }
+                    override fun animateContentOut(delay: Int, duration: Int) {}
                 }
             return CustomSnackbar(parent, content, contentViewCallback)
         }
