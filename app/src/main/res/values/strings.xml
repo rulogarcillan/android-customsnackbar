@@ -2,5 +2,7 @@
     <string name="app_name">Custom snackbar</string>
     <string name="title1">Row inserted correctly</string>
     <string name="action1">Cancel</string>
-    <string name="init_custom_snackbar">Init custom snackbar</string>
+    <string name="init_custom_snackbar_center">Show custom snackbar in center</string>
+    <string name="init_custom_snackbar_top">Show custom snackbar in top</string>
+    <string name="init_custom_snackbar_bottom">Show custom snackbar in bottom</string>
 </resources>

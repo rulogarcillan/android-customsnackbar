@@ -1,5 +1,6 @@
 package com.app.myapplication
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ class CustomSnackbar(
     contentViewCallback: com.google.android.material.snackbar.ContentViewCallback
 
 ) : BaseTransientBottomBar<CustomSnackbar>(parent, content, contentViewCallback) {
+
 
 
     init {
@@ -58,26 +60,37 @@ class CustomSnackbar(
             view: View,
             title: Int,
             action: Int,
-            duration: Int
+            duration: Int,
+            gravity: Int = Gravity.BOTTOM
         ): CustomSnackbar {
-            return createCustomSnackbar(view).apply {
-                setTitle(view.context.getString(title))
-                setAction(view.context.getString(action))
-                setDuration(duration)
-            }
+            return make(
+                view,
+                view.context.getString(title),
+                view.context.getString(action),
+                duration,
+                gravity
+            )
         }
 
         fun make(
             view: View,
             title: String,
             action: String,
-            duration: Int
+            duration: Int,
+            gravity: Int = Gravity.BOTTOM
         ): CustomSnackbar {
-            return createCustomSnackbar(view).apply {
+            val customSnackbar = createCustomSnackbar(view).apply {
                 setTitle(title)
                 setAction(action)
                 setDuration(duration)
             }
+
+            val mView = customSnackbar.view
+            val params = mView.layoutParams as FrameLayout.LayoutParams
+            params.gravity = gravity
+            mView.layoutParams = params
+           // customSnackbar.animationMode = ANIMATION_MODE_SLIDE
+            return customSnackbar
         }
 
         private fun createCustomSnackbar(view: View): CustomSnackbar {
@@ -94,10 +107,17 @@ class CustomSnackbar(
 
             val contentViewCallback =
                 object : com.google.android.material.snackbar.ContentViewCallback {
+                    override fun animateContentIn(delay: Int, duration: Int) {
+                        content.alpha = 0f
+                        content.animate().alpha(1f).setDuration(duration.toLong())
+                            .setStartDelay(delay.toLong()).start()
+                    }
 
-                    override fun animateContentIn(delay: Int, duration: Int) {}
-
-                    override fun animateContentOut(delay: Int, duration: Int) {}
+                    override fun animateContentOut(delay: Int, duration: Int) {
+                        content.alpha = 1f
+                        content.animate().alpha(0f).setDuration(duration.toLong())
+                            .setStartDelay(delay.toLong()).start()
+                    }
                 }
             return CustomSnackbar(parent, content, contentViewCallback)
         }
