@@ -2,5 +2,7 @@
 <resources>
     <declare-styleable name="colors">
         <attr name="customSnackBarColor" format="color" />
+        <attr name="customSnackBar2Color" format="color" />
+        <attr name="customSnackBar2StrokeColor" format="color" />
     </declare-styleable>
 </resources>

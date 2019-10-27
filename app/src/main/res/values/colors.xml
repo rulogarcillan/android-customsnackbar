@@ -6,6 +6,8 @@
     <color name="primaryTextColor">#ffffff</color>
 
     <color name="snackBackgroundColor">#323232</color>
+    <color name="snackBackground2Color">#e74c3c</color>
+    <color name="customSnackBar2StrokeColor">#c0392b</color>
 
 
 </resources>
